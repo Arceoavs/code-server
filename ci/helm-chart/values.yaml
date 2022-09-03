@@ -40,18 +40,18 @@ service:
   port: 8080
 
 ingress:
-  enabled: false
-  #annotations:
-  #  kubernetes.io/tls-acme: "true"
-  #hosts:
-  #  - host: code-server.example.loc
-  #    paths:
-  #      - /
-  ingressClassName: ""
-  #tls:
-  #  - secretName: code-server
-  #    hosts:
-  #      - code-server.example.loc
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-http01-issuer"
+  hosts:
+    - host: code.arz.st
+      paths:
+        - /
+  ingressClassName: "nginx"
+  tls:
+    - secretName: code-server
+      hosts:
+        - code.arz.st
 
 # Optional additional arguments
 extraArgs: []
