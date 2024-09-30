@@ -15,11 +15,11 @@ function runTestExtensionTests() {
     const text = await codeServerPage.page.locator("text=proxyUri").first().textContent()
     // Remove end slash in address
     const normalizedAddress = address.replace(/\/+$/, "")
-    expect(text).toBe(`Info: proxyUri: ${normalizedAddress}/proxy/{{port}}`)
+    expect(text).toBe(`Info: proxyUri: ${normalizedAddress}/proxy/{{port}}/`)
   })
 }
 
-const flags = ["--extensions-dir", path.join(__dirname, "./extensions")]
+const flags = ["--disable-workspace-trust", "--extensions-dir", path.join(__dirname, "./extensions")]
 
 describe("Extensions", flags, {}, () => {
   runTestExtensionTests()

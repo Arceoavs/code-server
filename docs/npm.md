@@ -1,3 +1,4 @@
+<!-- prettier-ignore-start -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 # npm Install Requirements
@@ -15,6 +16,7 @@
   - [Debugging install issues with npm](#debugging-install-issues-with-npm)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- prettier-ignore-end -->
 
 If you're installing code-server via `npm`, you'll need to install additional
 dependencies required to build the native modules used by VS Code. This article
@@ -28,7 +30,7 @@ includes installing instructions based on your operating system.
 ## Node.js version
 
 We use the same major version of Node.js shipped with Code's remote, which is
-currently `16.x`. VS Code also [lists Node.js
+currently `20.x`. VS Code also [lists Node.js
 requirements](https://github.com/microsoft/vscode/wiki/How-to-Contribute#prerequisites).
 
 Using other versions of Node.js [may lead to unexpected
@@ -77,7 +79,7 @@ Proceed to [installing](#installing)
 ## FreeBSD
 
 ```sh
-pkg install -y git python npm-node16 pkgconf
+pkg install -y git python npm-node20 pkgconf
 pkg install -y libinotify
 ```
 
@@ -90,12 +92,12 @@ Installing code-server requires all of the [prerequisites for VS Code developmen
 Next, install code-server with:
 
 ```bash
-npm install --global code-server --unsafe-perm
+npm install --global code-server
 code-server
 # Now visit http://127.0.0.1:8080. Your password is in ~/.config/code-server/config.yaml
 ```
 
-A `postinstall.sh` script will attempt to run. Select your terminal (e.g., Git bash) as the default application for `.sh` files. If an additional dialog does not appear, run the install command again.
+A `postinstall.sh` script will attempt to run. Select your terminal (e.g., Git bash) as the default shell for npm run-scripts. If an additional dialog does not appear, run the install command again.
 
 If the `code-server` command is not found, you'll need to [add a directory to your PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/). To find the directory, use the following command:
 
@@ -110,7 +112,7 @@ For help and additional troubleshooting, see [#1397](https://github.com/coder/co
 After adding the dependencies for your OS, install the code-server package globally:
 
 ```bash
-npm install --global code-server --unsafe-perm
+npm install --global code-server
 code-server
 # Now visit http://127.0.0.1:8080. Your password is in ~/.config/code-server/config.yaml
 ```
@@ -142,8 +144,8 @@ To debug installation issues, install with `npm`:
 
 ```shell
 # Uninstall
-npm uninstall --global --unsafe-perm code-server > /dev/null 2>&1
+npm uninstall --global code-server > /dev/null 2>&1
 
 # Install with logging
-npm install --loglevel verbose --global --unsafe-perm code-server
+npm install --loglevel verbose --global code-server
 ```
